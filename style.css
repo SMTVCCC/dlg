@@ -79,6 +79,10 @@ body.light-mode {
     letter-spacing: 1px;
 }
 
+.light-mode .title {
+    color: #333; /* 亮色模式下标题颜色调整为深色 */
+}
+
 .subtitle {
     font-size: 16px;
     color: #b0bec5;
