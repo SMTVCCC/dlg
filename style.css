@@ -83,6 +83,10 @@ body.light-mode {
     color: #333; /* 亮色模式下标题颜色调整为深色 */
 }
 
+.light-mode .username {
+    color: #333; /* 亮色模式下用户名颜色调整为深色 */
+}
+
 .subtitle {
     font-size: 16px;
     color: #b0bec5;
@@ -376,10 +380,6 @@ body.light-mode {
     font-size: 18px;
     font-weight: 600;
     color: #ffffff;
-}
-
-.light-mode .leaderboard-item span {
-    color: #333; /* 亮色模式下排行榜用户名颜色调整为深色 */
 }
 
 /* 经验值 */
