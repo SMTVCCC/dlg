@@ -93,15 +93,31 @@ body.light-mode {
 
 /* 排行榜布局 */
 .leaderboard {
+    flex-direction: column; /* 默认为垂直排列 */
     display: flex;
     gap: 20px;
     justify-content: center;
-    align-items: flex-start;
+    align-items: stretch; /* 让列充满可用宽度 */
+}
+
+/* 在大屏幕上恢复水平排列 */
+@media (min-width: 768px) {
+    .leaderboard {
+        flex-direction: row;
+        align-items: flex-start;
+    }
 }
 
 .column {
     flex: 1;
     min-width: 0;
+    margin-bottom: 20px; /* 在垂直排列时增加列之间的间距 */
+}
+
+@media (min-width: 768px) {
+    .column {
+        margin-bottom: 0; /* 在水平排列时移除底部间距 */
+    }
 }
 
 .rank-item {
@@ -161,11 +177,92 @@ body.light-mode {
 
 /* 排名数字 */
 .rank-number {
+    min-width: 30px; /* 调整最小宽度以适应小屏幕 */
     width: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 15px;
+    margin-right: 10px; /* 调整右边距 */
+}
+
+/* 响应式调整 */
+@media (max-width: 767px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .top-section {
+        margin-bottom: 20px;
+    }
+
+    .update-time {
+        font-size: 10px;
+        padding: 3px 6px;
+        top: 5px;
+        right: 5px;
+    }
+
+    .shield-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .days {
+        font-size: 16px;
+    }
+
+    .rank-item {
+        padding: 10px;
+        flex-direction: column; /* 在非常小的屏幕上，将排名项内容垂直排列 */
+        align-items: flex-start;
+    }
+
+    .user-info {
+        flex-direction: column; /* 用户信息也垂直排列 */
+        align-items: flex-start;
+        margin-bottom: 5px;
+    }
+
+    .avatar-container {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    .avatar {
+        width: 30px;
+        height: 30px;
+    }
+
+    .username {
+        font-size: 14px;
+        margin-bottom: 3px;
+    }
+
+    .xp {
+        font-size: 14px;
+    }
+
+    .rank-badge {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+
+    .rank-number-text {
+        font-size: 16px;
+    }
 }
 
 .rank-badge {
