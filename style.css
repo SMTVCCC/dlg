@@ -378,6 +378,10 @@ body.light-mode {
     color: #ffffff;
 }
 
+.light-mode .leaderboard-item span {
+    color: #333; /* 亮色模式下排行榜用户名颜色调整为深色 */
+}
+
 /* 经验值 */
 .xp {
     font-size: 16px;
