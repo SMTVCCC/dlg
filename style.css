@@ -1,0 +1,385 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 深色模式（默认） */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+    color: white;
+    min-height: 100vh;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+/* 亮色模式 */
+body.light-mode {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    color: #333;
+}
+
+/* 容器 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.light-mode .container {
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 50%, #e8e8e8 100%);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* 顶部区域 */
+.top-section {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.update-time {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.2);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+.light-mode .update-time {
+    color: rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.shield-container {
+    margin-bottom: 20px;
+}
+
+.shield-icon {
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 4px 8px rgba(255, 193, 7, 0.3));
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #b0bec5;
+    margin-bottom: 8px;
+}
+
+.days {
+    font-size: 18px;
+    color: #ffc107;
+    font-weight: 600;
+}
+
+/* 排行榜布局 */
+.leaderboard {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.column {
+    flex: 1;
+    min-width: 0;
+}
+
+.rank-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rank-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+.light-mode .rank-item {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .rank-item:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+/* 前三名特殊样式 */
+.rank-1 {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.2) 0%, rgba(255, 152, 0, 0.1) 100%);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.rank-2 {
+    background: linear-gradient(135deg, rgba(158, 158, 158, 0.2) 0%, rgba(117, 117, 117, 0.1) 100%);
+    border: 1px solid rgba(158, 158, 158, 0.3);
+}
+
+.rank-3 {
+    background: linear-gradient(135deg, rgba(205, 127, 50, 0.2) 0%, rgba(184, 115, 51, 0.1) 100%);
+    border: 1px solid rgba(205, 127, 50, 0.3);
+}
+
+.light-mode .rank-1 {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.3) 0%, rgba(255, 152, 0, 0.2) 100%);
+    border: 1px solid rgba(255, 193, 7, 0.4);
+}
+
+.light-mode .rank-2 {
+    background: linear-gradient(135deg, rgba(158, 158, 158, 0.3) 0%, rgba(117, 117, 117, 0.2) 100%);
+    border: 1px solid rgba(158, 158, 158, 0.4);
+}
+
+.light-mode .rank-3 {
+    background: linear-gradient(135deg, rgba(205, 127, 50, 0.3) 0%, rgba(184, 115, 51, 0.2) 100%);
+    border: 1px solid rgba(205, 127, 50, 0.4);
+}
+
+/* 排名数字 */
+.rank-number {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.rank-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+}
+
+.rank-badge.gold {
+    background: linear-gradient(135deg, #ffd700 0%, #ffb300 100%);
+    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
+}
+
+.rank-badge.silver {
+    background: linear-gradient(135deg, #c0c0c0 0%, #9e9e9e 100%);
+    box-shadow: 0 4px 8px rgba(192, 192, 192, 0.4);
+}
+
+.rank-badge.bronze {
+    background: linear-gradient(135deg, #cd7f32 0%, #b8733b 100%);
+    box-shadow: 0 4px 8px rgba(205, 127, 50, 0.4);
+}
+
+.rank-number-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4caf50;
+}
+
+/* 用户信息 */
+.user-info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    margin-right: 15px;
+}
+
+.avatar-container {
+    position: relative;
+    margin-right: 15px;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    background-color: #32CD32;
+    object-fit: contain;
+    padding: 2px;
+}
+
+.light-mode .avatar {
+    border: 3px solid rgba(0, 0, 0, 0.1);
+}
+
+.avatar:hover {
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.streak-badge {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    border: 2px solid #1a2332;
+}
+
+.streak-badge .dlg-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.streak-100 {
+    background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+    color: white;
+}
+
+.streak-party {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+}
+
+.streak-popcorn {
+    background: linear-gradient(135deg, #ff9f43 0%, #feca57 100%);
+}
+
+.party-icon, .dog-icon {
+    font-size: 14px;
+}
+
+.username {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* 经验值 */
+.xp {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4caf50;
+    min-width: 80px;
+    text-align: right;
+}
+
+.light-mode .xp {
+    color: #2e7d32;
+}
+
+/* 底部声明 */
+.disclaimer {
+    margin-top: 30px;
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.disclaimer p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    margin: 0;
+    font-style: italic;
+}
+
+.light-mode .disclaimer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .disclaimer p {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .leaderboard {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .left-column,
+    .right-column {
+        margin: 0;
+    }
+    
+    .disclaimer {
+        margin-top: 20px;
+        padding: 10px;
+    }
+    
+    .disclaimer p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin: 10px;
+        padding: 20px 15px;
+    }
+    
+    .title {
+        font-size: 28px;
+    }
+    
+    .rank-item {
+        padding: 12px;
+    }
+    
+    .username {
+        font-size: 16px;
+    }
+    
+    .xp {
+        font-size: 14px;
+        min-width: 70px;
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.rank-item {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.rank-item:nth-child(1) { animation-delay: 0.1s; }
+.rank-item:nth-child(2) { animation-delay: 0.2s; }
+.rank-item:nth-child(3) { animation-delay: 0.3s; }
+.rank-item:nth-child(4) { animation-delay: 0.4s; }
+.rank-item:nth-child(5) { animation-delay: 0.5s; }
+.rank-item:nth-child(6) { animation-delay: 0.6s; }
+.rank-item:nth-child(7) { animation-delay: 0.7s; }
