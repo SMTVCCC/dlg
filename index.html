@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Duolingo-leaderboard</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="dlg.svg" type="image/svg+xml" sizes="any">
-    <link rel="apple-touch-icon" href="dlg.svg">
+    <link rel="icon" href="./dlg.svg" type="image/svg+xml" sizes="any">
+    <link rel="apple-touch-icon" href="./dlg.svg">
 </head>
 <body>
     <div class="container">
         <!-- 顶部区域 -->
         <div class="top-section">
-            <div class="update-time">Update: 11:30, June 20</div>
+            <div class="update-time">Update: 20:00, June 20</div>
             <div class="shield-container">
                 <img src="pm.svg" alt="金色盾牌" class="shield-icon">
             </div>
@@ -36,7 +36,7 @@
                         </div>
                         <span class="username">Vincent</span>
                     </div>
-                    <div class="xp">2906 XP</div>
+                    <div class="xp">3046 XP</div>
                 </div>
 
                 <!-- 第2名 -->
@@ -88,11 +88,11 @@
                     </div>
                     <div class="user-info">
                         <div class="avatar-container">
-                            <img src="tx2.svg" alt="ALEXA" class="avatar">
+                            <img src="tx2.svg" alt="Kelly" class="avatar">
                         </div>
-                        <span class="username">ALEXA</span>
+                        <span class="username">Kelly</span>
                     </div>
-                    <div class="xp">1552 XP</div>
+                    <div class="xp">1608 XP</div>
                 </div>
             </div>
 
@@ -105,11 +105,11 @@
                     </div>
                     <div class="user-info">
                         <div class="avatar-container">
-                            <img src="tx2.svg" alt="Kelly" class="avatar">
+                            <img src="tx2.svg" alt="ALEXA" class="avatar">
                         </div>
-                        <span class="username">Kelly</span>
+                        <span class="username">ALEXA</span>
                     </div>
-                    <div class="xp">1108 XP</div>
+                    <div class="xp">1552 XP</div>
                 </div>
 
                 <!-- 第7名 -->
@@ -236,9 +236,51 @@
                 document.body.classList.remove('light-mode');
             }
         }
+
+        // 随机化头像功能
+        function randomizeAvatars() {
+            const allAvatars = Array.from(document.querySelectorAll('.rank-item .avatar'));
+            
+            // 第1名的头像保持不变 (tx1.svg)
+            if (allAvatars.length > 0) {
+                allAvatars[0].src = './tx1.svg';
+            }
+
+            const otherAvatars = allAvatars.slice(1);
+            if (otherAvatars.length === 0) {
+                return;
+            }
+
+            // Fisher-Yates shuffle 算法，随机排序
+            for (let i = otherAvatars.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [otherAvatars[i], otherAvatars[j]] = [otherAvatars[j], otherAvatars[i]];
+            }
+
+            const half = Math.ceil(otherAvatars.length / 2);
+            const tx1Avatars = otherAvatars.slice(0, half);
+            const tx2Avatars = otherAvatars.slice(half);
+
+            tx1Avatars.forEach(avatar => {
+                avatar.src = './tx1.svg';
+            });
+
+            tx2Avatars.forEach(avatar => {
+                avatar.src = './tx2.svg';
+            });
+        }
         
-        // 页面加载时设置主题
-        setThemeBasedOnTime();
+        // 页面加载时执行
+        function onReady() {
+            setThemeBasedOnTime();
+            randomizeAvatars();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', onReady);
+        } else {
+            onReady();
+        }
         
         // 每分钟检查一次时间，自动切换主题
         setInterval(setThemeBasedOnTime, 60000);
